@@ -1,0 +1,42 @@
+{
+  "os":  "Linux-6.8.0-52-generic-x86_64-with-glibc2.35",
+  "python":  "CPython 3.11.11",
+  "startedAt":  "2025-03-04T16:55:42.304058Z",
+  "program":  "/home/xavier/Projects/MasterCV/C6_Lab/Week2/task1_2.py",
+  "codePath":  "Week2/task1_2.py",
+  "git":  {
+    "remote":  "https://github.com/MCV2025/MCV_C6_G7_2025.git",
+    "commit":  "8b15bf280c593793eb5e3e18fdc7e629b53f10b7"
+  },
+  "email":  "xavier.mico.perez@gmail.com",
+  "root":  "/home/xavier/Projects/MasterCV/C6_Lab/Week2",
+  "host":  "xavier-PC",
+  "executable":  "/home/xavier/Projects/MasterCV/C6_Lab/c6venv/bin/python",
+  "codePathLocal":  "task1_2.py",
+  "cpu_count":  12,
+  "cpu_count_logical":  24,
+  "gpu":  "NVIDIA GeForce RTX 4080 SUPER",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "982820896768",
+      "used":  "392123617280"
+    }
+  },
+  "memory":  {
+    "total":  "67298103296"
+  },
+  "cpu":  {
+    "count":  12,
+    "countLogical":  24
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 4080 SUPER",
+      "memoryTotal":  "17171480576",
+      "cudaCores":  10240,
+      "architecture":  "Ada"
+    }
+  ],
+  "cudaVersion":  "12.2"
+}
