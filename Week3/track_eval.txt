@@ -1,0 +1,8 @@
+Clone :
+https://github.com/JonathonLuiten/TrackEval.git
+
+Copy the folders on our Team's Github.
+
+On the TrackEval folder:
+
+python scripts/run_mot_challenge.py --BENCHMARK s01_c001 --SPLIT_TO_EVAL train --TRACKERS_TO_EVAL PerfectTracker --METRICS HOTA, Identity --USE_PARALLEL False --NUM_PARALLEL_CORES 1 --DO_PREPROC False

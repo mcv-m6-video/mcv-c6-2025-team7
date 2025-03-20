@@ -1,0 +1,75 @@
+Eval Config:
+USE_PARALLEL         : False
+NUM_PARALLEL_CORES   : 1
+BREAK_ON_ERROR       : True
+RETURN_ON_ERROR      : False
+LOG_ON_ERROR         : C:\Users\cpreg\Documents\MCV\C6\Project1\Week3\TrackEval\error_log.txt
+PRINT_RESULTS        : True
+PRINT_ONLY_COMBINED  : False
+PRINT_CONFIG         : True
+TIME_PROGRESS        : True
+DISPLAY_LESS_PROGRESS : False
+OUTPUT_SUMMARY       : True
+OUTPUT_EMPTY_CLASSES : True
+OUTPUT_DETAILED      : True
+PLOT_CURVES          : True
+
+MotChallenge2DBox Config:
+PRINT_CONFIG         : True
+GT_FOLDER            : C:\Users\cpreg\Documents\MCV\C6\Project1\Week3\TrackEval\data/gt/mot_challenge/
+TRACKERS_FOLDER      : C:\Users\cpreg\Documents\MCV\C6\Project1\Week3\TrackEval\data/trackers/mot_challenge/
+OUTPUT_FOLDER        : None
+TRACKERS_TO_EVAL     : ['PerfectTracker']
+CLASSES_TO_EVAL      : ['pedestrian']
+BENCHMARK            : s01_c001
+SPLIT_TO_EVAL        : train
+INPUT_AS_ZIP         : False
+DO_PREPROC           : False
+TRACKER_SUB_FOLDER   : data
+OUTPUT_SUB_FOLDER    :
+TRACKER_DISPLAY_NAMES : None
+SEQMAP_FOLDER        : None
+SEQMAP_FILE          : None
+SEQ_INFO             : None
+GT_LOC_FORMAT        : {gt_folder}/{seq}/gt/gt.txt
+SKIP_SPLIT_FOL       : False
+
+Identity Config:
+METRICS              : ['HOTA', 'Identity']
+THRESHOLD            : 0.5
+PRINT_CONFIG         : True
+
+Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox dataset using the following metrics: HOTA, Identity, Count
+
+
+Evaluating PerfectTracker
+
+    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, s01_c001-01)        0.1283 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.1574 sec
+    HOTA.eval_sequence()                                                   0.2069 sec
+    Identity.eval_sequence()                                               0.0155 sec
+    Count.eval_sequence()                                                  0.0000 sec
+1 eval_sequence(s01_c001-01, PerfectTracker)                             0.5125 sec
+
+All sequences for PerfectTracker finished in 0.51 seconds
+
+HOTA: PerfectTracker-pedestrian    HOTA      DetA      AssA      DetRe     DetPr     AssRe     AssPr     LocA      OWTA      HOTA(0)   LocA(0)   HOTALocA(0)
+s01_c001-01                        29.652    24.766    36.515    37.107    33.176    51.293    48.5      66.839    36.521    61.977    48.149    29.841
+COMBINED                           29.652    24.766    36.515    37.107    33.176    51.293    48.5      66.839    36.521    61.977    48.149    29.841
+
+Identity: PerfectTracker-pedestrianIDF1      IDR       IDP       IDTP      IDFN      IDFP      
+s01_c001-01                        38.135    40.394    36.115    1190      1756      2105
+COMBINED                           38.135    40.394    36.115    1190      1756      2105
+
+Count: PerfectTracker-pedestrian   Dets      GT_Dets   IDs       GT_IDs
+s01_c001-01                        3295      2946      81        77
+COMBINED                           3295      2946      81        77
+
+Timing analysis:
+MotChallenge2DBox.get_raw_seq_data                                     0.1283 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            0.1574 sec
+HOTA.eval_sequence                                                     0.2069 sec
+Identity.eval_sequence                                                 0.0155 sec
+Count.eval_sequence                                                    0.0000 sec
+eval_sequence                                                          0.5125 sec
+Evaluator.evaluate                                                     1.9345 sec
