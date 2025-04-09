@@ -1,0 +1,20 @@
+{
+    "frame_dir": "C:/Users/cpreg/Documents/MCV/C6/Project2/Week5/Data/SoccerNet/frames",
+    "save_dir": "C:/Users/cpreg/Documents/MCV/C6/Project2/Week6/output/base",
+    "labels_dir": "C:/Users/cpreg/Documents/MCV/C6/Project2/Week5/Data/SoccerNet/labels",
+    "store_mode": "load",
+    "task": "spotting",
+    "batch_size": 4,
+    "clip_len": 50,
+    "stride": 3,
+    "dataset": "soccernetball",
+    "epoch_num_frames": 500000,
+    "feature_arch": "rny002",
+    "learning_rate": 0.0004,
+    "num_classes": 12,
+    "num_epochs": 20,
+    "warm_up_epochs": 3,
+    "only_test": false,
+    "device": "cuda",
+    "num_workers": 4
+}
