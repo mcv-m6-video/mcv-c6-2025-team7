@@ -9,6 +9,8 @@ Weekly project deliveries for the Module C6 based on Video Analysis, from Master
   
 - Week 4: The goal of week 4 is to perform a multicamera car tracking algorithm using the techniques learned in any of the previous weeks using any of the video sequences from the 2024 NVIDIA AI City Challenge database. 
 
+Final Presentation: https://docs.google.com/presentation/d/1xBH7wxrVYxIpcjhYRKThHyvfbkOVPQRe1fW0kLkclL8/edit?usp=sharing
+
 - Week 5: The goal of this week is to get familiar with the baseline and dataset to perform action classification in football clips.
 
-Final Presentation: https://docs.google.com/presentation/d/1xBH7wxrVYxIpcjhYRKThHyvfbkOVPQRe1fW0kLkclL8/edit?usp=sharing
+- Week 6: The goal of this week is to precisely spot the football (ball) actions in time (time instants) without altering the temporal resolution.
