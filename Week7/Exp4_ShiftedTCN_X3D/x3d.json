@@ -1,0 +1,23 @@
+{
+    "frame_dir": "/home/carlesprego/Desktop/C6_Project/CVMasterActionSpotting/SoccerNet/SN-BAS-2025/frames/398x224",
+    "save_dir": "/home/carlesprego/Desktop/C6_Project/CVMasterActionSpotting/SoccerNet/SN-BAS-2025/output",
+    "labels_dir": "/home/carlesprego/Desktop/C6_Project/CVMasterActionSpotting/SoccerNet/SN-BAS-2025/videos",
+    "store_mode": "load",
+    "task": "spotting",
+    "batch_size": 4,
+    "clip_len": 50,
+    "stride": 1,
+    "dataset": "soccernetball",
+    "epoch_num_frames": 500000,
+    "feature_arch": "x3d_s",
+    "learning_rate": 0.00005,
+    "num_classes": 12,
+    "num_epochs": 20,
+    "warm_up_epochs": 3,
+    "only_test": false,
+    "device": "cuda",
+    "num_workers": 4,
+    "tcn_stages": 2,
+    "tcn_layers": 4,
+    "multi_stage_tcn": true
+}

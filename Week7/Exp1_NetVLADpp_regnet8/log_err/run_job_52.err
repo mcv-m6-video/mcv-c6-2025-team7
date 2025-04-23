@@ -1,0 +1,21 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xavier-mico-perez (mcv-c6g7) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.8
+wandb: Run data is saved locally in /home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/wandb/run-20250422_174542-xotpx4qk
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run NetVLADpp_regnet8
+wandb: ⭐️ View project at https://wandb.ai/mcv-c6g7/Week7_NetVLADpp_TPNR50
+wandb: 🚀 View run at https://wandb.ai/mcv-c6g7/Week7_NetVLADpp_TPNR50/runs/xotpx4qk
+Traceback (most recent call last):
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 277, in <module>
+    main(get_args())
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 274, in main
+    run_training(args, trial=None)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 129, in run_training
+    model = Model(args=args)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/model/model_spotting_vnpp.py", line 158, in __init__
+    self._model = Model.Impl(args=args)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/model/model_spotting_vnpp.py", line 70, in __init__
+    num_clusters=args.num_vlad_clusters,
+AttributeError: 'Namespace' object has no attribute 'num_vlad_clusters'
+srun: error: xavier-PC: task 0: Exited with exit code 1

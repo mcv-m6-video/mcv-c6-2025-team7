@@ -1,0 +1,61 @@
+Namespace(model='TCN_r8', seed=1, early_stopping=False, optuna=False, use_tpn=True)
+Namespace(model='TCN_r8', seed=1, early_stopping=False, optuna=False, use_tpn=True)
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 6062315
+Using Linear Warmup (3) + Cosine Annealing LR (47)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.81197 Val loss: 0.48138 Val ap: 0.00042
+New best mAP epoch!
+[Epoch 1] Train loss: 0.52967 Val loss: 0.47672 Val ap: 0.00940
+New best mAP epoch!
+[Epoch 2] Train loss: 0.50899 Val loss: 0.45230 Val ap: 0.00986
+New best mAP epoch!
+[Epoch 3] Train loss: 0.50154 Val loss: 0.45783 Val ap: 0.01252
+New best mAP epoch!
+[Epoch 4] Train loss: 0.50115 Val loss: 0.46810 Val ap: 0.01477
+New best mAP epoch!
+[Epoch 5] Train loss: 0.49330 Val loss: 0.45005 Val ap: 0.01598
+New best mAP epoch!
+[Epoch 6] Train loss: 0.47883 Val loss: 0.45256 Val ap: 0.02422
+New best mAP epoch!
+[Epoch 7] Train loss: 0.47507 Val loss: 0.43591 Val ap: 0.04669
+New best mAP epoch!
+[Epoch 8] Train loss: 0.47475 Val loss: 0.44172 Val ap: 0.04524
+[Epoch 9] Train loss: 0.46738 Val loss: 0.45989 Val ap: 0.03586
+[Epoch 10] Train loss: 0.46965 Val loss: 0.43717 Val ap: 0.04679
+New best mAP epoch!
+[Epoch 11] Train loss: 0.45683 Val loss: 0.44071 Val ap: 0.03533
+[Epoch 12] Train loss: 0.45403 Val loss: 0.41393 Val ap: 0.04984
+New best mAP epoch!
+[Epoch 13] Train loss: 0.46273 Val loss: 0.41586 Val ap: 0.05005
+New best mAP epoch!
+[Epoch 14] Train loss: 0.45540 Val loss: 0.45017 Val ap: 0.04251
+[Epoch 15] Train loss: 0.45337 Val loss: 0.44226 Val ap: 0.03972
+[Epoch 16] Train loss: 0.43946 Val loss: 0.43181 Val ap: 0.04846
+[Epoch 17] Train loss: 0.45108 Val loss: 0.42211 Val ap: 0.05263
+New best mAP epoch!
+[Epoch 18] Train loss: 0.44618 Val loss: 0.45154 Val ap: 0.04554
+[Epoch 19] Train loss: 0.45036 Val loss: 0.43148 Val ap: 0.07037
+New best mAP epoch!
+[Epoch 20] Train loss: 0.44862 Val loss: 0.45931 Val ap: 0.03911
+[Epoch 21] Train loss: 0.43603 Val loss: 0.44146 Val ap: 0.05696
+[Epoch 22] Train loss: 0.44174 Val loss: 0.44849 Val ap: 0.05439
+[Epoch 23] Train loss: 0.43780 Val loss: 0.43121 Val ap: 0.07298
+New best mAP epoch!
+[Epoch 24] Train loss: 0.43285 Val loss: 0.43946 Val ap: 0.06564
+[Epoch 25] Train loss: 0.43740 Val loss: 0.45068 Val ap: 0.05290
+[Epoch 26] Train loss: 0.44465 Val loss: 0.43832 Val ap: 0.05836
+[Epoch 27] Train loss: 0.43997 Val loss: 0.42342 Val ap: 0.06310
+[Epoch 28] Train loss: 0.43470 Val loss: 0.42945 Val ap: 0.06273
+[Epoch 29] Train loss: 0.43267 Val loss: 0.42802 Val ap: 0.06698
+[Epoch 30] Train loss: 0.42930 Val loss: 0.41934 Val ap: 0.06420
+[Epoch 31] Train loss: 0.42896 Val loss: 0.43978 Val ap: 0.06861
+[Epoch 32] Train loss: 0.42538 Val loss: 0.42663 Val ap: 0.07198

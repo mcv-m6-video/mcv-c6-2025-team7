@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 266, in <module>
+    main(get_args())
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 231, in main
+    args = update_args(args, config)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 62, in update_args
+    args.downsample_factor = config['downsample_factor']
+KeyError: 'downsample_factor'
+srun: error: xavier-PC: task 0: Exited with exit code 1

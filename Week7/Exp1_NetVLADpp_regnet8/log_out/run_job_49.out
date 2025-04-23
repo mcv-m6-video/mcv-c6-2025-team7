@@ -1,0 +1,20 @@
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 24303811
+Using Linear Warmup (5) + Cosine Annealing LR (15)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 1.87516 Val loss: 0.89874  Val ap: 0.00199
+New best mAP epoch!
+[Epoch 1] Train loss: 0.62189 Val loss: 0.51462  Val ap: 0.00069
+[Epoch 2] Train loss: 0.51463 Val loss: 0.47211  Val ap: 0.00000
+[Epoch 3] Train loss: 0.50039 Val loss: 0.46640  Val ap: 0.00749
+New best mAP epoch!
+[Epoch 4] Train loss: 0.49818 Val loss: 0.46882  Val ap: 0.00974
+New best mAP epoch!

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN.py", line 255, in <module>
+    main(get_args())
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN.py", line 220, in main
+    config_path = os.path.join('config', args.model + '.json')
+AttributeError: 'NoneType' object has no attribute 'model'
+srun: error: xavier-PC: task 0: Exited with exit code 1

@@ -1,0 +1,2 @@
+/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/bin/python: can't open file '/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/my_script.py': [Errno 2] No such file or directory
+srun: error: xavier-PC: task 0: Exited with exit code 2

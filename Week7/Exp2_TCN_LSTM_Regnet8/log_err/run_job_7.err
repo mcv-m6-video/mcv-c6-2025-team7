@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN.py", line 23, in <module>
+    from model.model_spotting_TCN import Model
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/model/model_spotting_TCN.py", line 18, in <module>
+    from model.modules import BaseRGBModel, FCLayers, step
+ImportError: cannot import name 'step' from 'model.modules' (/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/model/modules.py)
+srun: error: xavier-PC: task 0: Exited with exit code 1

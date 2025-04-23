@@ -1,0 +1,60 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xavier-mico-perez (mcv-c6g7) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.8
+wandb: Run data is saved locally in /home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/wandb/run-20250420_010740-a0ir2gvn
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run TPNr8_TCN
+wandb: ⭐️ View project at https://wandb.ai/mcv-c6g7/Week7_TPN-R8_TCN
+wandb: 🚀 View run at https://wandb.ai/mcv-c6g7/Week7_TPN-R8_TCN/runs/a0ir2gvn
+  0%|          | 0/2500 [00:00<?, ?it/s]  0%|          | 0/2500 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN.py", line 265, in <module>
+    main(get_args())
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN.py", line 262, in main
+    run_training(args, trial=None)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN.py", line 156, in run_training
+    train_loss = model.epoch(
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/model/model_spotting_TCN.py", line 180, in epoch
+    pred = self._model(frame)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/model/model_spotting_TCN.py", line 98, in forward
+    im_feat = self._features(x)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/model/tpn_r50.py", line 93, in forward
+    features = self.backbone(x)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/timm/models/_features.py", line 345, in forward
+    return list(self._collect(x).values())
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/timm/models/_features.py", line 299, in _collect
+    x = module(x)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/timm/models/resnet.py", line 229, in forward
+    x = self.bn3(x)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 175, in forward
+    return F.batch_norm(
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/functional.py", line 2509, in batch_norm
+    return torch.batch_norm(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 72.00 MiB. GPU 
+srun: error: xavier-PC: task 0: Exited with exit code 1

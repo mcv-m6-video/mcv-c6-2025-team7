@@ -1,0 +1,5 @@
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN_r008.py", line 213
+    with open(f"results/TCN_r8{args.batch_size}_{args.learning_reate}_{args.num_epochs}_{args.stride}_{args.warm_up_epochs}.txt".txt", "w") as f:
+                           srun: error: xavier-PC: task 0: Exited with exit code 1
+                                                                                                              ^
+SyntaxError: unterminated string literal (detected at line 213)

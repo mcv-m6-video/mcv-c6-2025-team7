@@ -1,0 +1,758 @@
+Namespace(model='TCN_r50', seed=1, early_stopping=False, optuna=True, use_tpn=True)
+Namespace(model='TCN_r50', seed=1, early_stopping=False, optuna=True, use_tpn=True)
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (5) + Cosine Annealing LR (15)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.64934 Val loss: 0.46353 Val ap: 0.00828
+New best mAP epoch!
+[Epoch 1] Train loss: 0.47417 Val loss: 0.44260 Val ap: 0.07095
+New best mAP epoch!
+[Epoch 2] Train loss: 0.41699 Val loss: 0.39906 Val ap: 0.08784
+New best mAP epoch!
+[Epoch 3] Train loss: 0.37922 Val loss: 0.38411 Val ap: 0.16343
+New best mAP epoch!
+[Epoch 4] Train loss: 0.35305 Val loss: 0.39252 Val ap: 0.16842
+New best mAP epoch!
+[Epoch 5] Train loss: 0.32152 Val loss: 0.38066 Val ap: 0.19479
+New best mAP epoch!
+[Epoch 6] Train loss: 0.28698 Val loss: 0.39424 Val ap: 0.19907
+New best mAP epoch!
+[Epoch 7] Train loss: 0.25825 Val loss: 0.40868 Val ap: 0.19410
+[Epoch 8] Train loss: 0.23401 Val loss: 0.43554 Val ap: 0.21163
+New best mAP epoch!
+[Epoch 9] Train loss: 0.21152 Val loss: 0.48816 Val ap: 0.18986
+[Epoch 10] Train loss: 0.19522 Val loss: 0.47735 Val ap: 0.23878
+New best mAP epoch!
+[Epoch 11] Train loss: 0.17799 Val loss: 0.49453 Val ap: 0.21635
+[Epoch 12] Train loss: 0.17126 Val loss: 0.51142 Val ap: 0.21863
+[Epoch 13] Train loss: 0.16971 Val loss: 0.52663 Val ap: 0.20843
+[Epoch 14] Train loss: 0.16881 Val loss: 0.58360 Val ap: 0.18726
+[Epoch 15] Train loss: 0.16501 Val loss: 0.56010 Val ap: 0.20651
+[Epoch 16] Train loss: 0.16259 Val loss: 0.55814 Val ap: 0.19838
+[Epoch 17] Train loss: 0.16470 Val loss: 0.52512 Val ap: 0.21681
+[Epoch 18] Train loss: 0.16251 Val loss: 0.58055 Val ap: 0.19888
+[Epoch 19] Train loss: 0.16379 Val loss: 0.58962 Val ap: 0.17961
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |               56.47 |
++--------------------------+---------------------+
+| DRIVE                    |               46.85 |
++--------------------------+---------------------+
+| HEADER                   |               27.18 |
++--------------------------+---------------------+
+| HIGH PASS                |               39.5  |
++--------------------------+---------------------+
+| OUT                      |                5.13 |
++--------------------------+---------------------+
+| CROSS                    |               25.79 |
++--------------------------+---------------------+
+| THROW IN                 |               22.12 |
++--------------------------+---------------------+
+| SHOT                     |               11.35 |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                5.57 |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                0    |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |                  20 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+==================================================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #                   Mult-Adds
+==================================================================================================================================
+Model                                                   [4, 50, 13]               --                        --
+├─Impl: 1-1                                             [4, 50, 13]               --                        --
+│    └─RegNet: 2-1                                      [200, 768]                --                        --
+│    │    └─ConvNormAct: 3-1                            [200, 32, 112, 199]       928                       3,851,366,400
+│    │    └─RegStage: 3-2                               [200, 64, 56, 100]        19,016                    26,332,584,000
+│    │    └─RegStage: 3-3                               [200, 128, 28, 50]        177,104                   49,893,468,800
+│    │    └─RegStage: 3-4                               [200, 320, 14, 25]        2,384,592                 147,737,206,400
+│    │    └─RegStage: 3-5                               [200, 768, 7, 13]         2,912,528                 57,989,891,200
+│    │    └─Identity: 3-6                               [200, 768, 7, 13]         --                        --
+│    │    └─ClassifierHead: 3-7                         [200, 768]                --                        --
+│    └─TCNAggregator: 2-2                               [4, 50, 768]              --                        --
+│    │    └─AvgPool1d: 3-8                              [4, 768, 24]              --                        --
+│    │    └─Sequential: 3-9                             [4, 768, 24]              5,310,720                 509,829,120
+│    └─FCLayers: 2-3                                    [4, 50, 13]               --                        --
+│    │    └─Dropout: 3-10                               [200, 768]                --                        --
+│    │    └─Linear: 3-11                                [200, 13]                 9,997                     1,999,400
+==================================================================================================================================
+Total params: 10,814,885
+Trainable params: 10,814,885
+Non-trainable params: 0
+Total mult-adds (G): 286.32
+==================================================================================================================================
+Input size (MB): 213.96
+Forward/backward pass size (MB): 15000.31
+Params size (MB): 43.14
+Estimated Total Size (MB): 15257.41
+==================================================================================================================================
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (3) + Cosine Annealing LR (17)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 1.02428 Val loss: 0.49066 Val ap: 0.00878
+New best mAP epoch!
+[Epoch 1] Train loss: 0.50333 Val loss: 0.47799 Val ap: 0.00895
+New best mAP epoch!
+[Epoch 2] Train loss: 0.48679 Val loss: 0.44234 Val ap: 0.00850
+[Epoch 3] Train loss: 0.47971 Val loss: 0.45626 Val ap: 0.01188
+New best mAP epoch!
+[Epoch 4] Train loss: 0.47766 Val loss: 0.45573 Val ap: 0.00974
+[Epoch 5] Train loss: 0.47087 Val loss: 0.44474 Val ap: 0.00727
+[Epoch 6] Train loss: 0.45766 Val loss: 0.45184 Val ap: 0.01247
+New best mAP epoch!
+[Epoch 7] Train loss: 0.45420 Val loss: 0.42615 Val ap: 0.01287
+New best mAP epoch!
+[Epoch 8] Train loss: 0.45362 Val loss: 0.44360 Val ap: 0.01851
+New best mAP epoch!
+[Epoch 9] Train loss: 0.44709 Val loss: 0.46550 Val ap: 0.01480
+[Epoch 10] Train loss: 0.45063 Val loss: 0.44045 Val ap: 0.02209
+New best mAP epoch!
+[Epoch 11] Train loss: 0.43859 Val loss: 0.43316 Val ap: 0.02822
+New best mAP epoch!
+[Epoch 12] Train loss: 0.43593 Val loss: 0.42003 Val ap: 0.02515
+[Epoch 13] Train loss: 0.44553 Val loss: 0.41460 Val ap: 0.02429
+[Epoch 14] Train loss: 0.44006 Val loss: 0.45168 Val ap: 0.02401
+[Epoch 15] Train loss: 0.44014 Val loss: 0.43975 Val ap: 0.02519
+[Epoch 16] Train loss: 0.43039 Val loss: 0.42865 Val ap: 0.02519
+[Epoch 17] Train loss: 0.43854 Val loss: 0.42064 Val ap: 0.02478
+[Epoch 18] Train loss: 0.43833 Val loss: 0.44091 Val ap: 0.02503
+[Epoch 19] Train loss: 0.44354 Val loss: 0.44005 Val ap: 0.02310
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |                6.61 |
++--------------------------+---------------------+
+| DRIVE                    |                5    |
++--------------------------+---------------------+
+| HEADER                   |                1.6  |
++--------------------------+---------------------+
+| HIGH PASS                |                8.19 |
++--------------------------+---------------------+
+| OUT                      |                0.25 |
++--------------------------+---------------------+
+| CROSS                    |                1.21 |
++--------------------------+---------------------+
+| THROW IN                 |                0.76 |
++--------------------------+---------------------+
+| SHOT                     |                0    |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                0    |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                0    |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |                1.97 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+==================================================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #                   Mult-Adds
+==================================================================================================================================
+Model                                                   [6, 50, 13]               --                        --
+├─Impl: 1-1                                             [6, 50, 13]               --                        --
+│    └─RegNet: 2-1                                      [300, 768]                --                        --
+│    │    └─ConvNormAct: 3-1                            [300, 32, 112, 199]       928                       5,777,049,600
+│    │    └─RegStage: 3-2                               [300, 64, 56, 100]        19,016                    39,498,876,000
+│    │    └─RegStage: 3-3                               [300, 128, 28, 50]        177,104                   74,840,203,200
+│    │    └─RegStage: 3-4                               [300, 320, 14, 25]        2,384,592                 221,605,809,600
+│    │    └─RegStage: 3-5                               [300, 768, 7, 13]         2,912,528                 86,984,836,800
+│    │    └─Identity: 3-6                               [300, 768, 7, 13]         --                        --
+│    │    └─ClassifierHead: 3-7                         [300, 768]                --                        --
+│    └─TCNAggregator: 2-2                               [6, 50, 768]              --                        --
+│    │    └─AvgPool1d: 3-8                              [6, 768, 10]              --                        --
+│    │    └─Sequential: 3-9                             [6, 768, 10]              5,310,720                 318,643,200
+│    └─FCLayers: 2-3                                    [6, 50, 13]               --                        --
+│    │    └─Dropout: 3-10                               [300, 768]                --                        --
+│    │    └─Linear: 3-11                                [300, 13]                 9,997                     2,999,100
+==================================================================================================================================
+Total params: 10,814,885
+Trainable params: 10,814,885
+Non-trainable params: 0
+Total mult-adds (G): 429.03
+==================================================================================================================================
+Input size (MB): 320.95
+Forward/backward pass size (MB): 22498.91
+Params size (MB): 43.14
+Estimated Total Size (MB): 22863.00
+==================================================================================================================================
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (5) + Cosine Annealing LR (15)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.54017 Val loss: 0.45999 Val ap: 0.00882
+New best mAP epoch!
+[Epoch 1] Train loss: 0.48902 Val loss: 0.46738 Val ap: 0.00855
+[Epoch 2] Train loss: 0.48062 Val loss: 0.44643 Val ap: 0.01024
+New best mAP epoch!
+[Epoch 3] Train loss: 0.47769 Val loss: 0.46788 Val ap: 0.00998
+[Epoch 4] Train loss: 0.47936 Val loss: 0.46991 Val ap: 0.01114
+New best mAP epoch!
+[Epoch 5] Train loss: 0.47086 Val loss: 0.45078 Val ap: 0.00878
+[Epoch 6] Train loss: 0.45651 Val loss: 0.43437 Val ap: 0.02270
+New best mAP epoch!
+[Epoch 7] Train loss: 0.44817 Val loss: 0.42981 Val ap: 0.01543
+[Epoch 8] Train loss: 0.44298 Val loss: 0.46345 Val ap: 0.02679
+New best mAP epoch!
+[Epoch 9] Train loss: 0.43240 Val loss: 0.48762 Val ap: 0.03106
+New best mAP epoch!
+[Epoch 10] Train loss: 0.43181 Val loss: 0.44519 Val ap: 0.03815
+New best mAP epoch!
+[Epoch 11] Train loss: 0.41389 Val loss: 0.46689 Val ap: 0.05012
+New best mAP epoch!
+[Epoch 12] Train loss: 0.40787 Val loss: 0.46226 Val ap: 0.05485
+New best mAP epoch!
+[Epoch 13] Train loss: 0.41620 Val loss: 0.45206 Val ap: 0.05691
+New best mAP epoch!
+[Epoch 14] Train loss: 0.40984 Val loss: 0.49795 Val ap: 0.04804
+[Epoch 15] Train loss: 0.41042 Val loss: 0.47672 Val ap: 0.05187
+[Epoch 16] Train loss: 0.40037 Val loss: 0.46926 Val ap: 0.05861
+New best mAP epoch!
+[Epoch 17] Train loss: 0.40944 Val loss: 0.44864 Val ap: 0.04989
+[Epoch 18] Train loss: 0.40899 Val loss: 0.44286 Val ap: 0.05860
+[Epoch 19] Train loss: 0.41611 Val loss: 0.44614 Val ap: 0.03605
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |               10.13 |
++--------------------------+---------------------+
+| DRIVE                    |                6.73 |
++--------------------------+---------------------+
+| HEADER                   |                2.36 |
++--------------------------+---------------------+
+| HIGH PASS                |               12.01 |
++--------------------------+---------------------+
+| OUT                      |                1.84 |
++--------------------------+---------------------+
+| CROSS                    |                5.05 |
++--------------------------+---------------------+
+| THROW IN                 |               10.2  |
++--------------------------+---------------------+
+| SHOT                     |                0.35 |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                0    |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                0    |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |                4.06 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+==================================================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #                   Mult-Adds
+==================================================================================================================================
+Model                                                   [4, 50, 13]               --                        --
+├─Impl: 1-1                                             [4, 50, 13]               --                        --
+│    └─RegNet: 2-1                                      [200, 768]                --                        --
+│    │    └─ConvNormAct: 3-1                            [200, 32, 112, 199]       928                       3,851,366,400
+│    │    └─RegStage: 3-2                               [200, 64, 56, 100]        19,016                    26,332,584,000
+│    │    └─RegStage: 3-3                               [200, 128, 28, 50]        177,104                   49,893,468,800
+│    │    └─RegStage: 3-4                               [200, 320, 14, 25]        2,384,592                 147,737,206,400
+│    │    └─RegStage: 3-5                               [200, 768, 7, 13]         2,912,528                 57,989,891,200
+│    │    └─Identity: 3-6                               [200, 768, 7, 13]         --                        --
+│    │    └─ClassifierHead: 3-7                         [200, 768]                --                        --
+│    └─TCNAggregator: 2-2                               [4, 50, 768]              --                        --
+│    │    └─AvgPool1d: 3-8                              [4, 768, 10]              --                        --
+│    │    └─Sequential: 3-9                             [4, 768, 10]              5,310,720                 212,428,800
+│    └─FCLayers: 2-3                                    [4, 50, 13]               --                        --
+│    │    └─Dropout: 3-10                               [200, 768]                --                        --
+│    │    └─Linear: 3-11                                [200, 13]                 9,997                     1,999,400
+==================================================================================================================================
+Total params: 10,814,885
+Trainable params: 10,814,885
+Non-trainable params: 0
+Total mult-adds (G): 286.02
+==================================================================================================================================
+Input size (MB): 213.96
+Forward/backward pass size (MB): 14999.27
+Params size (MB): 43.14
+Estimated Total Size (MB): 15256.38
+==================================================================================================================================
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (3) + Cosine Annealing LR (17)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.53477 Val loss: 0.43804 Val ap: 0.06528
+New best mAP epoch!
+[Epoch 1] Train loss: 0.44293 Val loss: 0.43800 Val ap: 0.07674
+New best mAP epoch!
+[Epoch 2] Train loss: 0.42054 Val loss: 0.43443 Val ap: 0.06873
+[Epoch 3] Train loss: 0.40135 Val loss: 0.39895 Val ap: 0.13562
+New best mAP epoch!
+[Epoch 4] Train loss: 0.38270 Val loss: 0.41229 Val ap: 0.14317
+New best mAP epoch!
+[Epoch 5] Train loss: 0.36851 Val loss: 0.35276 Val ap: 0.17686
+New best mAP epoch!
+[Epoch 6] Train loss: 0.34709 Val loss: 0.36512 Val ap: 0.17367
+[Epoch 7] Train loss: 0.33618 Val loss: 0.33931 Val ap: 0.20335
+New best mAP epoch!
+[Epoch 8] Train loss: 0.32221 Val loss: 0.33106 Val ap: 0.22697
+New best mAP epoch!
+[Epoch 9] Train loss: 0.30623 Val loss: 0.36253 Val ap: 0.22957
+New best mAP epoch!
+[Epoch 10] Train loss: 0.29081 Val loss: 0.34499 Val ap: 0.25656
+New best mAP epoch!
+[Epoch 11] Train loss: 0.26914 Val loss: 0.34234 Val ap: 0.25224
+[Epoch 12] Train loss: 0.25241 Val loss: 0.35231 Val ap: 0.27070
+New best mAP epoch!
+[Epoch 13] Train loss: 0.24527 Val loss: 0.35710 Val ap: 0.27053
+[Epoch 14] Train loss: 0.22961 Val loss: 0.39374 Val ap: 0.25706
+[Epoch 15] Train loss: 0.22388 Val loss: 0.38355 Val ap: 0.24799
+[Epoch 16] Train loss: 0.21644 Val loss: 0.37813 Val ap: 0.25628
+[Epoch 17] Train loss: 0.22255 Val loss: 0.36596 Val ap: 0.26103
+[Epoch 18] Train loss: 0.22074 Val loss: 0.38847 Val ap: 0.26555
+[Epoch 19] Train loss: 0.22123 Val loss: 0.39679 Val ap: 0.26282
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |               70.04 |
++--------------------------+---------------------+
+| DRIVE                    |               63.7  |
++--------------------------+---------------------+
+| HEADER                   |               37.84 |
++--------------------------+---------------------+
+| HIGH PASS                |               52.2  |
++--------------------------+---------------------+
+| OUT                      |               11.67 |
++--------------------------+---------------------+
+| CROSS                    |               17.15 |
++--------------------------+---------------------+
+| THROW IN                 |               31.43 |
++--------------------------+---------------------+
+| SHOT                     |               22.24 |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                2    |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                6.82 |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |               26.26 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+==================================================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #                   Mult-Adds
+==================================================================================================================================
+Model                                                   [6, 50, 13]               --                        --
+├─Impl: 1-1                                             [6, 50, 13]               --                        --
+│    └─RegNet: 2-1                                      [300, 768]                --                        --
+│    │    └─ConvNormAct: 3-1                            [300, 32, 112, 199]       928                       5,777,049,600
+│    │    └─RegStage: 3-2                               [300, 64, 56, 100]        19,016                    39,498,876,000
+│    │    └─RegStage: 3-3                               [300, 128, 28, 50]        177,104                   74,840,203,200
+│    │    └─RegStage: 3-4                               [300, 320, 14, 25]        2,384,592                 221,605,809,600
+│    │    └─RegStage: 3-5                               [300, 768, 7, 13]         2,912,528                 86,984,836,800
+│    │    └─Identity: 3-6                               [300, 768, 7, 13]         --                        --
+│    │    └─ClassifierHead: 3-7                         [300, 768]                --                        --
+│    └─TCNAggregator: 2-2                               [6, 50, 768]              --                        --
+│    │    └─AvgPool1d: 3-8                              [6, 768, 24]              --                        --
+│    │    └─Sequential: 3-9                             [6, 768, 24]              5,310,720                 764,743,680
+│    └─FCLayers: 2-3                                    [6, 50, 13]               --                        --
+│    │    └─Dropout: 3-10                               [300, 768]                --                        --
+│    │    └─Linear: 3-11                                [300, 13]                 9,997                     2,999,100
+==================================================================================================================================
+Total params: 10,814,885
+Trainable params: 10,814,885
+Non-trainable params: 0
+Total mult-adds (G): 429.47
+==================================================================================================================================
+Input size (MB): 320.95
+Forward/backward pass size (MB): 22500.46
+Params size (MB): 43.14
+Estimated Total Size (MB): 22864.55
+==================================================================================================================================
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (3) + Cosine Annealing LR (17)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.57014 Val loss: 0.46654 Val ap: 0.01124
+New best mAP epoch!
+[Epoch 1] Train loss: 0.48814 Val loss: 0.45556 Val ap: 0.00974
+[Epoch 2] Train loss: 0.47612 Val loss: 0.45146 Val ap: 0.00928
+[Epoch 3] Train loss: 0.46891 Val loss: 0.44196 Val ap: 0.04541
+New best mAP epoch!
+[Epoch 4] Train loss: 0.46186 Val loss: 0.43668 Val ap: 0.03305
+[Epoch 5] Train loss: 0.44807 Val loss: 0.42626 Val ap: 0.03568
+[Epoch 6] Train loss: 0.43360 Val loss: 0.43441 Val ap: 0.04083
+[Epoch 7] Train loss: 0.42389 Val loss: 0.43410 Val ap: 0.03901
+[Epoch 8] Train loss: 0.41864 Val loss: 0.41810 Val ap: 0.06098
+New best mAP epoch!
+[Epoch 9] Train loss: 0.40827 Val loss: 0.46139 Val ap: 0.05205
+[Epoch 10] Train loss: 0.40399 Val loss: 0.43434 Val ap: 0.04991
+[Epoch 11] Train loss: 0.38742 Val loss: 0.43151 Val ap: 0.06089
+[Epoch 12] Train loss: 0.38031 Val loss: 0.41409 Val ap: 0.07304
+New best mAP epoch!
+[Epoch 13] Train loss: 0.38299 Val loss: 0.41886 Val ap: 0.06864
+[Epoch 14] Train loss: 0.37574 Val loss: 0.45022 Val ap: 0.06522
+[Epoch 15] Train loss: 0.37128 Val loss: 0.43652 Val ap: 0.07347
+New best mAP epoch!
+[Epoch 16] Train loss: 0.36215 Val loss: 0.43083 Val ap: 0.07014
+[Epoch 17] Train loss: 0.37021 Val loss: 0.43163 Val ap: 0.07218
+[Epoch 18] Train loss: 0.36872 Val loss: 0.43446 Val ap: 0.07437
+New best mAP epoch!
+[Epoch 19] Train loss: 0.37355 Val loss: 0.43703 Val ap: 0.07898
+New best mAP epoch!
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |               18.8  |
++--------------------------+---------------------+
+| DRIVE                    |               15.56 |
++--------------------------+---------------------+
+| HEADER                   |                4.54 |
++--------------------------+---------------------+
+| HIGH PASS                |               18.52 |
++--------------------------+---------------------+
+| OUT                      |                3.92 |
++--------------------------+---------------------+
+| CROSS                    |               16.35 |
++--------------------------+---------------------+
+| THROW IN                 |                9.05 |
++--------------------------+---------------------+
+| SHOT                     |                0.93 |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                0.35 |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                0    |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |                7.34 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+==================================================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #                   Mult-Adds
+==================================================================================================================================
+Model                                                   [6, 50, 13]               --                        --
+├─Impl: 1-1                                             [6, 50, 13]               --                        --
+│    └─RegNet: 2-1                                      [300, 768]                --                        --
+│    │    └─ConvNormAct: 3-1                            [300, 32, 112, 199]       928                       5,777,049,600
+│    │    └─RegStage: 3-2                               [300, 64, 56, 100]        19,016                    39,498,876,000
+│    │    └─RegStage: 3-3                               [300, 128, 28, 50]        177,104                   74,840,203,200
+│    │    └─RegStage: 3-4                               [300, 320, 14, 25]        2,384,592                 221,605,809,600
+│    │    └─RegStage: 3-5                               [300, 768, 7, 13]         2,912,528                 86,984,836,800
+│    │    └─Identity: 3-6                               [300, 768, 7, 13]         --                        --
+│    │    └─ClassifierHead: 3-7                         [300, 768]                --                        --
+│    └─TCNAggregator: 2-2                               [6, 50, 768]              --                        --
+│    │    └─AvgPool1d: 3-8                              [6, 768, 10]              --                        --
+│    │    └─Sequential: 3-9                             [6, 768, 10]              5,310,720                 318,643,200
+│    └─FCLayers: 2-3                                    [6, 50, 13]               --                        --
+│    │    └─Dropout: 3-10                               [300, 768]                --                        --
+│    │    └─Linear: 3-11                                [300, 13]                 9,997                     2,999,100
+==================================================================================================================================
+Total params: 10,814,885
+Trainable params: 10,814,885
+Non-trainable params: 0
+Total mult-adds (G): 429.03
+==================================================================================================================================
+Input size (MB): 320.95
+Forward/backward pass size (MB): 22498.91
+Params size (MB): 43.14
+Estimated Total Size (MB): 22863.00
+==================================================================================================================================
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (5) + Cosine Annealing LR (15)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.65079 Val loss: 0.46377 Val ap: 0.00659
+New best mAP epoch!
+[Epoch 1] Train loss: 0.48176 Val loss: 0.46447 Val ap: 0.01724
+New best mAP epoch!
+[Epoch 2] Train loss: 0.44336 Val loss: 0.42238 Val ap: 0.06062
+New best mAP epoch!
+[Epoch 3] Train loss: 0.40368 Val loss: 0.39402 Val ap: 0.12155
+New best mAP epoch!
+[Epoch 4] Train loss: 0.38144 Val loss: 0.39079 Val ap: 0.14042
+New best mAP epoch!
+[Epoch 5] Train loss: 0.35434 Val loss: 0.37681 Val ap: 0.15122
+New best mAP epoch!
+[Epoch 6] Train loss: 0.32347 Val loss: 0.39079 Val ap: 0.16046
+New best mAP epoch!
+[Epoch 7] Train loss: 0.30177 Val loss: 0.37462 Val ap: 0.17419
+New best mAP epoch!
+[Epoch 8] Train loss: 0.28263 Val loss: 0.40067 Val ap: 0.17454
+New best mAP epoch!
+[Epoch 9] Train loss: 0.26157 Val loss: 0.41731 Val ap: 0.20177
+New best mAP epoch!
+[Epoch 10] Train loss: 0.24954 Val loss: 0.41786 Val ap: 0.19897
+[Epoch 11] Train loss: 0.23198 Val loss: 0.43415 Val ap: 0.20280
+New best mAP epoch!
+[Epoch 12] Train loss: 0.22477 Val loss: 0.42323 Val ap: 0.20427
+New best mAP epoch!
+[Epoch 13] Train loss: 0.22486 Val loss: 0.43209 Val ap: 0.19500
+[Epoch 14] Train loss: 0.22395 Val loss: 0.46684 Val ap: 0.19036
+[Epoch 15] Train loss: 0.22011 Val loss: 0.47013 Val ap: 0.19399
+[Epoch 16] Train loss: 0.21613 Val loss: 0.44824 Val ap: 0.19790
+[Epoch 17] Train loss: 0.22100 Val loss: 0.42843 Val ap: 0.19445
+[Epoch 18] Train loss: 0.21870 Val loss: 0.50308 Val ap: 0.17761
+[Epoch 19] Train loss: 0.22089 Val loss: 0.47677 Val ap: 0.18443
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |               52.32 |
++--------------------------+---------------------+
+| DRIVE                    |               37.1  |
++--------------------------+---------------------+
+| HEADER                   |               20.77 |
++--------------------------+---------------------+
+| HIGH PASS                |               42.3  |
++--------------------------+---------------------+
+| OUT                      |                3.86 |
++--------------------------+---------------------+
+| CROSS                    |               25    |
++--------------------------+---------------------+
+| THROW IN                 |               16.53 |
++--------------------------+---------------------+
+| SHOT                     |                5.35 |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                4.32 |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                0    |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |                17.3 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+==================================================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #                   Mult-Adds
+==================================================================================================================================
+Model                                                   [4, 50, 13]               --                        --
+├─Impl: 1-1                                             [4, 50, 13]               --                        --
+│    └─RegNet: 2-1                                      [200, 768]                --                        --
+│    │    └─ConvNormAct: 3-1                            [200, 32, 112, 199]       928                       3,851,366,400
+│    │    └─RegStage: 3-2                               [200, 64, 56, 100]        19,016                    26,332,584,000
+│    │    └─RegStage: 3-3                               [200, 128, 28, 50]        177,104                   49,893,468,800
+│    │    └─RegStage: 3-4                               [200, 320, 14, 25]        2,384,592                 147,737,206,400
+│    │    └─RegStage: 3-5                               [200, 768, 7, 13]         2,912,528                 57,989,891,200
+│    │    └─Identity: 3-6                               [200, 768, 7, 13]         --                        --
+│    │    └─ClassifierHead: 3-7                         [200, 768]                --                        --
+│    └─TCNAggregator: 2-2                               [4, 50, 768]              --                        --
+│    │    └─AvgPool1d: 3-8                              [4, 768, 22]              --                        --
+│    │    └─Sequential: 3-9                             [4, 768, 22]              5,310,720                 467,343,360
+│    └─FCLayers: 2-3                                    [4, 50, 13]               --                        --
+│    │    └─Dropout: 3-10                               [200, 768]                --                        --
+│    │    └─Linear: 3-11                                [200, 13]                 9,997                     1,999,400
+==================================================================================================================================
+Total params: 10,814,885
+Trainable params: 10,814,885
+Non-trainable params: 0
+Total mult-adds (G): 286.27
+==================================================================================================================================
+Input size (MB): 213.96
+Forward/backward pass size (MB): 15000.16
+Params size (MB): 43.14
+Estimated Total Size (MB): 15257.26
+==================================================================================================================================
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (5) + Cosine Annealing LR (15)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.54893 Val loss: 0.46797 Val ap: 0.01747
+New best mAP epoch!
+[Epoch 1] Train loss: 0.48589 Val loss: 0.46855 Val ap: 0.01768
+New best mAP epoch!
+[Epoch 2] Train loss: 0.47145 Val loss: 0.42975 Val ap: 0.02923
+New best mAP epoch!
+[Epoch 3] Train loss: 0.45234 Val loss: 0.43913 Val ap: 0.06548
+New best mAP epoch!
+[Epoch 4] Train loss: 0.44008 Val loss: 0.42817 Val ap: 0.08144
+New best mAP epoch!
+[Epoch 5] Train loss: 0.42327 Val loss: 0.40958 Val ap: 0.08557
+New best mAP epoch!
+[Epoch 6] Train loss: 0.40069 Val loss: 0.40285 Val ap: 0.10891
+New best mAP epoch!
+[Epoch 7] Train loss: 0.38781 Val loss: 0.40623 Val ap: 0.11351
+New best mAP epoch!
+[Epoch 8] Train loss: 0.37631 Val loss: 0.39162 Val ap: 0.13424
+New best mAP epoch!
+[Epoch 9] Train loss: 0.36103 Val loss: 0.41246 Val ap: 0.11123
+[Epoch 10] Train loss: 0.35201 Val loss: 0.38432 Val ap: 0.13518
+New best mAP epoch!
+[Epoch 11] Train loss: 0.33436 Val loss: 0.38151 Val ap: 0.13186
+[Epoch 12] Train loss: 0.32494 Val loss: 0.37129 Val ap: 0.13598
+New best mAP epoch!
+[Epoch 13] Train loss: 0.32773 Val loss: 0.37326 Val ap: 0.12207
+[Epoch 14] Train loss: 0.32314 Val loss: 0.40490 Val ap: 0.12346
+[Epoch 15] Train loss: 0.32281 Val loss: 0.39001 Val ap: 0.12910
+[Epoch 16] Train loss: 0.31247 Val loss: 0.38517 Val ap: 0.12727
+[Epoch 17] Train loss: 0.32181 Val loss: 0.38056 Val ap: 0.14373
+New best mAP epoch!
+[Epoch 18] Train loss: 0.31977 Val loss: 0.39074 Val ap: 0.14566
+New best mAP epoch!
+[Epoch 19] Train loss: 0.32758 Val loss: 0.41326 Val ap: 0.13504
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |               43.09 |
++--------------------------+---------------------+
+| DRIVE                    |               39.86 |
++--------------------------+---------------------+
+| HEADER                   |               20.34 |
++--------------------------+---------------------+
+| HIGH PASS                |               27.06 |
++--------------------------+---------------------+
+| OUT                      |                3.32 |
++--------------------------+---------------------+
+| CROSS                    |               19.3  |
++--------------------------+---------------------+
+| THROW IN                 |               13.42 |
++--------------------------+---------------------+
+| SHOT                     |                6.04 |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                0.43 |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                0    |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |                14.4 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+==================================================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #                   Mult-Adds
+==================================================================================================================================
+Model                                                   [6, 50, 13]               --                        --
+├─Impl: 1-1                                             [6, 50, 13]               --                        --
+│    └─RegNet: 2-1                                      [300, 768]                --                        --
+│    │    └─ConvNormAct: 3-1                            [300, 32, 112, 199]       928                       5,777,049,600
+│    │    └─RegStage: 3-2                               [300, 64, 56, 100]        19,016                    39,498,876,000
+│    │    └─RegStage: 3-3                               [300, 128, 28, 50]        177,104                   74,840,203,200
+│    │    └─RegStage: 3-4                               [300, 320, 14, 25]        2,384,592                 221,605,809,600
+│    │    └─RegStage: 3-5                               [300, 768, 7, 13]         2,912,528                 86,984,836,800
+│    │    └─Identity: 3-6                               [300, 768, 7, 13]         --                        --
+│    │    └─ClassifierHead: 3-7                         [300, 768]                --                        --
+│    └─TCNAggregator: 2-2                               [6, 50, 768]              --                        --
+│    │    └─AvgPool1d: 3-8                              [6, 768, 18]              --                        --
+│    │    └─Sequential: 3-9                             [6, 768, 18]              5,310,720                 573,557,760
+│    └─FCLayers: 2-3                                    [6, 50, 13]               --                        --
+│    │    └─Dropout: 3-10                               [300, 768]                --                        --
+│    │    └─Linear: 3-11                                [300, 13]                 9,997                     2,999,100
+==================================================================================================================================
+Total params: 10,814,885
+Trainable params: 10,814,885
+Non-trainable params: 0
+Total mult-adds (G): 429.28
+==================================================================================================================================
+Input size (MB): 320.95
+Forward/backward pass size (MB): 22499.79
+Params size (MB): 43.14
+Estimated Total Size (MB): 22863.88
+==================================================================================================================================
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 10814885
+Using Linear Warmup (3) + Cosine Annealing LR (17)
+START TRAINING EPOCHS
+[Epoch 0] Train loss: 0.74407 Val loss: 0.46804 Val ap: 0.00989
+New best mAP epoch!

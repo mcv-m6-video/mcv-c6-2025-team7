@@ -1,0 +1,5 @@
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp2_TCN_LSTM_Regnet8/main_spotting_TCN_r008.py", line 221
+    (args.)
+          ^
+SyntaxError: f-string: invalid syntax
+srun: error: xavier-PC: task 0: Exited with exit code 1

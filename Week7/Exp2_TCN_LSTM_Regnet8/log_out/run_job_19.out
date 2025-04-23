@@ -1,0 +1,120 @@
+Namespace(model='TCN_r8', seed=1, early_stopping=False, optuna=False, use_tpn=True)
+Namespace(model='TCN_r8', seed=1, early_stopping=False, optuna=False, use_tpn=True)
+Setting seed to:  1
+Dataset size: 10000
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITtrain
+data/soccernetball/train.json : 4 videos, 576615 frames
+Loaded clips from /home/xavier/Projects/MasterCV/C6_Lab/Week5/dataset/SoccerNet/SN-BAS-2025/output_base/splits/LEN50SPLITval
+data/soccernetball/val.json : 1 videos, 146892 frames
+data/soccernetball/val.json : 1 videos, 146892 frames (2 stride)
+data/soccernetball/test.json : 2 videos, 298653 frames (2 stride)
+Datasets have been loaded from previous versions correctly!
+Model params: 6062315
+START INFERENCE
++--------------------------+---------------------+
+| Class                    |   Average Precision |
++==========================+=====================+
+| PASS                     |               19.82 |
++--------------------------+---------------------+
+| DRIVE                    |               14.51 |
++--------------------------+---------------------+
+| HEADER                   |                4.34 |
++--------------------------+---------------------+
+| HIGH PASS                |               26.63 |
++--------------------------+---------------------+
+| OUT                      |                2.65 |
++--------------------------+---------------------+
+| CROSS                    |                6.59 |
++--------------------------+---------------------+
+| THROW IN                 |                4.79 |
++--------------------------+---------------------+
+| SHOT                     |                0    |
++--------------------------+---------------------+
+| BALL PLAYER BLOCK        |                4.55 |
++--------------------------+---------------------+
+| PLAYER SUCCESSFUL TACKLE |                0    |
++--------------------------+---------------------+
+| FREE KICK                |                0    |
++--------------------------+---------------------+
+| GOAL                     |                0    |
++--------------------------+---------------------+
++------+---------------------+
+|      |   Average Precision |
++======+=====================+
+| Mean |                6.99 |
++------+---------------------+
+CORRECTLY FINISHED TRAINING AND INFERENCE
+=======================================================================================================================================
+Layer (type:depth-idx)                                       Output Shape              Param #                   Mult-Adds
+=======================================================================================================================================
+Model                                                        [4, 50, 13]               --                        --
+├─Impl: 1-1                                                  [4, 50, 13]               --                        --
+│    └─TPN_R50: 2-1                                          [4, 50, 126]              --                        --
+│    │    └─FeatureListNet: 3-1                              [200, 320, 14, 25]        (5,494,168)               285,804,516,800
+│    │    └─SimpleTPN: 3-2                                   [4, 126, 14, 25]          423,234                   492,145,416
+│    │    └─SimpleTPN: 3-3                                   [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-4                                   [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-5                                   [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-6                                   [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-7                                   [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-8                                   [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-9                                   [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-10                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-11                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-12                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-13                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-14                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-15                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-16                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-17                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-18                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-19                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-20                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-21                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-22                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-23                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-24                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-25                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-26                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-27                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-28                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-29                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-30                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-31                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-32                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-33                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-34                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-35                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-36                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-37                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-38                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-39                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-40                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-41                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-42                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-43                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-44                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-45                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-46                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-47                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-48                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-49                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-50                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    │    └─SimpleTPN: 3-51                                  [4, 126, 14, 25]          (recursive)               492,145,416
+│    └─TCNAggregator: 2-2                                    [4, 50, 126]              --                        --
+│    │    └─AvgPool1d: 3-52                                  [4, 126, 22]              --                        --
+│    │    └─Sequential: 3-53                                 [4, 126, 22]              143,262                   12,607,056
+│    └─FCLayers: 2-3                                         [4, 50, 13]               --                        --
+│    │    └─Dropout: 3-54                                    [200, 126]                --                        --
+│    │    └─Linear: 3-55                                     [200, 13]                 1,651                     330,200
+=======================================================================================================================================
+Total params: 6,062,315
+Trainable params: 568,147
+Non-trainable params: 5,494,168
+Total mult-adds (G): 310.42
+=======================================================================================================================================
+Input size (MB): 213.96
+Forward/backward pass size (MB): 15158.27
+Params size (MB): 24.13
+Estimated Total Size (MB): 15396.36
+=======================================================================================================================================

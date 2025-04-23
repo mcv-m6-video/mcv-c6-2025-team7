@@ -1,0 +1,32 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xavier-mico-perez (mcv-c6g7) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.8
+wandb: Run data is saved locally in /home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/wandb/run-20250422_101543-es04umiz
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run NetVLADpp_regnet8
+wandb: ⭐️ View project at https://wandb.ai/mcv-c6g7/Week7_NetVLADpp_TPNR50
+wandb: 🚀 View run at https://wandb.ai/mcv-c6g7/Week7_NetVLADpp_TPNR50/runs/es04umiz
+  0%|          | 0/2500 [00:00<?, ?it/s]  0%|          | 0/2500 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 267, in <module>
+    main(get_args())
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 264, in main
+    run_training(args, trial=None)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/main_spotting_vn++.py", line 151, in run_training
+    train_loss = model.epoch(
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/model/model_spotting_vnpp.py", line 181, in epoch
+    pred = self._model(frame)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/model/model_spotting_vnpp.py", line 105, in forward
+    im_feat = self._features(
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/.soccerenv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xavier/Projects/MasterCV/C6_Lab/Week7/Exp1_NetVLADpp_regnet8/model/tpn_r50.py", line 91, in forward
+    B, T, C, H, W = x.shape
+ValueError: not enough values to unpack (expected 5, got 4)
+srun: error: xavier-PC: task 0: Exited with exit code 1
