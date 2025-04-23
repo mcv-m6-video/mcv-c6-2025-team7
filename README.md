@@ -14,3 +14,7 @@ Final Presentation: https://docs.google.com/presentation/d/1xBH7wxrVYxIpcjhYRKTh
 - Week 5: The goal of this week is to get familiar with the baseline and dataset to perform action classification in football clips.
 
 - Week 6: The goal of this week is to precisely spot the football (ball) actions in time (time instants) without altering the temporal resolution.
+
+- Week 7: The goal of this week is to precisely spot the football (ball) actions in time (time instants) with no constraints.
+
+Final Presentation: https://docs.google.com/presentation/d/1Jn2C2AdgFuSywCQU5jujKKjlYpUJ2CwLcqrxL1GCaxM/edit?usp=sharing
